@@ -54,9 +54,7 @@ export const ModalHolderClose = styled(ModalHolder)`
 
 export const ModalHolderContent = styled(ModalHolder)`
   display: grid;
-  grid-template-rows: 1fr;
   grid-gap: 1.5em;
-  padding-top: 0;
 `
 
 export const ModalHolderTitle = styled(ModalHolder)`
@@ -71,7 +69,12 @@ export const ModalHolderTitle = styled(ModalHolder)`
   }
 `
 
-export const ModalInputHolder = styled(ModalHolderContent)``
+export const ModalInputForm = styled.form`
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-gap: 1.5em;
+  padding-top: 0;
+`
 
 export const ModalInput = styled.input`
   border: 1px solid #D9D9D9;
@@ -126,7 +129,7 @@ export const ModalButtonCoverUp = styled.span`
   }
 `
 
-export const ModalSendButton = styled.a`
+export const ModalSendButton = styled.button`
   width: 100%;
   display: inline-flex;
   align-items: center;

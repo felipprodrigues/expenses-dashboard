@@ -25,18 +25,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media(max-width: 767px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__content {
 
     & button {
-      padding: 1rem 3.5rem;
+      padding-top: clamp(.75rem, 2.5vw, 1rem);
+      padding-bottom: clamp(.75rem, 2.5vw, 1rem);
+      padding-left: clamp(2rem, 2.5vw, 3.5rem);
+      padding-right: clamp(2rem, 2.5vw, 3.5rem);
       border: none;
       border-radius: 6px;
       background-color: #401A9B;
       color: #B9B9B9;
-      font-weight: bold;
-      font-size: 1rem;
+      font-weight: 500;
+      font-size: clamp(.8rem, 2.5vw, 1.1rem);;
       filter: brightness(.9);
       cursor: pointer;
       transition: all .15s linear;
@@ -44,6 +52,10 @@
       &:hover {
         filter: brightness(1);
         color: #d9d9d9;
+      }
+
+      @media(max-width: 767px) {
+        margin-top: 1.5rem
       }
     }
   }
@@ -68,6 +80,10 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1rem;
     margin-bottom: 1rem;
+
+    @media(max-width: 767px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }
 

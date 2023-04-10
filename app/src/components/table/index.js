@@ -2,6 +2,7 @@ import React from 'react'
 
 //* STYLES
 import {
+  TableContainer,
   TableHolder,
   TableHeadItems,
   TableBodyWrapper,
@@ -13,17 +14,20 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 //* HELPERS
 import currencyMask from '@/helpers/currencyMask';
-import getCurrentDate from '@/helpers/getCurrentDate';
 
 function Table({
   tableData,
   handleDelete,
   headers
 }) {
-  console.log(tableData, 'aqui ')
+
   return (
     <>
-        <TableHolder gridColumns={"repeat(4, 1fr) 75px"} padding={'1rem'}>
+      <TableContainer>
+        <TableHolder
+          gridColumns={"repeat(4, 1fr) 75px"}
+          padding={'1rem'}
+        >
           {headers.map((items, index) => {
             return (
               <>
@@ -39,7 +43,7 @@ function Table({
           })}
         </TableHolder>
 
-        {tableData.map((items, index) => {
+        {tableData.map((item, index) => {
           return (
             <>
               <TableBodyWrapper>
@@ -50,35 +54,35 @@ function Table({
                 >
                   <TableContent>
                     <span>
-                      {items.description}
+                      {item.description}
                     </span>
                   </TableContent>
                   <TableContent>
-                    {items.type === 'entrada' ? (
+                    {item.type === 'entrada' ? (
                       <span style={{color: '#06D6A2', fontWeight: 600}}>
-                        {currencyMask(items.value)}
+                        {currencyMask(item.value)}
                       </span>
                     )
                     : (
                       <span style={{color: '#DB3766', fontWeight: 600}}>
-                        {currencyMask(items.value)}
+                        {currencyMask(item.value)}
                       </span>
                     )}
                   </TableContent>
                   <TableContent>
                     <span>
-                      {items.category}
+                      {item.category}
                     </span>
                   </TableContent>
                   <TableContent>
                     <span>
-                      {getCurrentDate()}
+                      {item.date}
                     </span>
                   </TableContent>
                   <TableContent>
                     <DeleteOutlineIcon
                       style={{color: '#DB3766'}}
-                      onClick={() => handleDelete(items, items.id)}
+                      onClick={() => handleDelete(item)}
                     />
                   </TableContent>
                 </TableHolder>
@@ -87,6 +91,7 @@ function Table({
             )
           }
         )}
+      </TableContainer>
     </>
   )
 }

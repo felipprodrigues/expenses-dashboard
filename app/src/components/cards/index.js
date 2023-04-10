@@ -11,6 +11,9 @@ import styles from '../../styles/Home.module.scss'
 //* ICONS
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
+//* HELPERS
+import currencyMask from '@/helpers/currencyMask';
+
 function Cards({
   label,
   value,
@@ -37,7 +40,7 @@ function Cards({
 
       <CardContent fontColor={fontColor}>
         <span>
-          {value}
+          {currencyMask(value)}
         </span>
       </CardContent>
     </CardWrapper>
