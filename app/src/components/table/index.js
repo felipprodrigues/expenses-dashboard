@@ -46,7 +46,9 @@ function Table({
         {tableData.map((item, index) => {
           return (
             <>
-              <TableBodyWrapper>
+              <TableBodyWrapper
+                key={`item-${item}-${index}`}
+              >
                 <TableHolder
                   gridColumns={"repeat(4, 1fr) 75px"}
                   hasMarginBottom={true}
@@ -58,16 +60,14 @@ function Table({
                     </span>
                   </TableContent>
                   <TableContent>
-                    {item.type === 'entrada' ? (
-                      <span style={{color: '#06D6A2', fontWeight: 600}}>
-                        {currencyMask(item.value)}
-                      </span>
-                    )
-                    : (
-                      <span style={{color: '#DB3766', fontWeight: 600}}>
-                        {currencyMask(item.value)}
-                      </span>
-                    )}
+                    <span
+                      className="is-parsed"
+                      style={{
+                        color: item.type === 'entrada' ? '#06D6A2' : '#DB3766',
+                      }}
+                    >
+                      {currencyMask(item.value)}
+                    </span>
                   </TableContent>
                   <TableContent>
                     <span>

@@ -1,11 +1,14 @@
 //* UTILS
 import React, {useEffect, useState} from 'react'
 import Head from 'next/head'
+import 'react-toastify/dist/ReactToastify.css';
 
 //* COMPONENTS
 import Cards from '../components/cards'
 import Table from '../components/table'
 import ModalComponent from '../components/modal'
+import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify'
 
 //* STYLES
 import styles from '../styles/Home.module.scss'
@@ -38,7 +41,7 @@ export default function Home() {
       description: 'Curso de NextJS',
       value: 899,
       category: 'Educação',
-      date: '12/02/2022 às 14h04',
+      date: '12/02/2022 às 19h32',
       type: 'saida'
     }
   ])
@@ -73,27 +76,45 @@ export default function Home() {
     return id
   }
 
-  const handleCreate = () => {
-    const data = {
-      id: handleId(),
-      description,
-      value,
-      category,
-      type,
-      date: getCurrentDate()
+  const resetInput = () => {
+    setValue(0)
+    setDescription('')
+    setCategory('')
+  }
+
+  const handleCreate = async () => {
+    if(!value || !description || !category) {
+      toast.error('Preencha todos os campos!')
+      return
     }
 
-    const draft = tableData
-    draft.push(data)
-    setTableData([...draft])
+    try {
+      const data = {
+        id: handleId(),
+        description,
+        value,
+        category,
+        type,
+        date: getCurrentDate()
+      }
 
-    if(data.type === 'entrada') {
-      setEntryValue(entryValue + data.value)
-    } else {
-      setExitValue(exitValue + data.value)
+      const draft = tableData
+      draft.push(data)
+      setTableData([...draft])
+
+      if(data.type === 'entrada') {
+        setEntryValue(entryValue + data.value)
+      } else {
+        setExitValue(exitValue + data.value)
+      }
+
+      toggleModal()
+      resetInput()
+
+      toast.success('Dados atualizados com sucesso!')
+    } catch {
+      toast.error('Algo deu errado. Tente novamente!')
     }
-
-    toggleModal()
   }
 
   const handleDelete = (el) => {
@@ -106,10 +127,13 @@ export default function Home() {
     } else {
       setExitValue((currentVal) => currentVal - el.value)
     }
+
+    toast.success(`${el.description} removido com sucesso!`)
   }
 
   return (
     <>
+      <ToastContainer autoClose={3000}/>
       <Head>
         <title>Teste Ticto</title>
         <meta name="description" content="Criado por Felipe Rodrigues" />
@@ -178,6 +202,7 @@ export default function Home() {
           setCategory={setCategory}
           handleCreate={handleCreate}
           setType={setType}
+          type={type}
         />
       </main>
     </>

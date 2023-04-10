@@ -4,17 +4,17 @@ import React from 'react'
 import {
   Modal,
   ModalInner,
-  ModalHolderContent,
-  ModalHolderTitle,
-  ModalSelectHolder,
+  ModalHolderCloseBtn,
+  ModalContent,
+  ModalTitle,
+  ModalToggleHolder,
   ModalInput,
   ModalCloseButton,
   ModalIconHolder,
-  ModalHolderClose,
   ModalSendButton,
-  ModalHiddenInput,
-  ModalButtonCoverUp,
-  ModalInputForm
+  ModalToggleInput,
+  ModalToggleCoverUp,
+  ModalForm
 } from './styles'
 
 //* ICONS
@@ -29,13 +29,14 @@ function ModalComponent({
   setValue,
   setCategory,
   handleCreate,
-  setType
+  setType,
+  type
 }) {
 
   return (
     <Modal isOpen={isOpen}>
       <ModalInner>
-        <ModalHolderClose>
+        <ModalHolderCloseBtn>
           <ModalCloseButton
             onClick={toggle}
           >
@@ -43,21 +44,19 @@ function ModalComponent({
               <CloseIcon />
             </ModalIconHolder>
           </ModalCloseButton>
-        </ModalHolderClose>
+        </ModalHolderCloseBtn>
 
-        <ModalHolderContent>
-          <ModalHolderTitle>
+        <ModalContent>
+          <ModalTitle>
             <h1>Cadastrar Transação</h1>
-          </ModalHolderTitle>
+          </ModalTitle>
 
-          <ModalInputForm
-            type="reset"
-          >
+          <ModalForm>
             <ModalInput
               name="description"
               id="description"
               placeholder='Descrição'
-              required
+              required={"true"}
               onChange={({target}) => setDescription(target.value)}
             />
             <ModalInput
@@ -69,29 +68,35 @@ function ModalComponent({
               onChange={({target}) => setValue(parseFloat(target.value))}
             />
 
-            <ModalSelectHolder>
-              <ModalHiddenInput
+            <ModalToggleHolder>
+              <ModalToggleInput
                 type="radio"
                 name="button"
                 id="entrada"
-                onChange={() => setType('entrada')}
+                onChange={() => {setType('entrada')}}
               />
-              <ModalButtonCoverUp>
-                <ArrowCircleUpIcon style={{color: '#06D6A2'}}/>
+              <ModalToggleCoverUp
+                bgColor={type === 'entrada' ? '#06D6A2' : '#fff'}
+                fontColor={type === 'entrada' ? '#fff' : '#4E5555'}
+                >
+                <ArrowCircleUpIcon style={{color: type === 'entrada' ? '#fff' : '#06D6A2'}}/>
                 Entrada
-              </ModalButtonCoverUp>
+              </ModalToggleCoverUp>
 
-              <ModalHiddenInput
+              <ModalToggleInput
                 name="button"
                 id="saida"
                 type="radio"
-                onChange={() => setType('saida')}
-                />
-              <ModalButtonCoverUp>
-                <ArrowCircleDownIcon style={{color: '#DB3766'}}/>
+                onChange={() => {setType('saida')}}
+              />
+              <ModalToggleCoverUp
+                bgColor={type === 'saida' ? '#DB3766' : '#fff'}
+                fontColor={type === 'saida' ? '#fff' : '#4E5555'}
+              >
+                <ArrowCircleDownIcon style={{color: type === 'saida' ? '#fff' : '#DB3766'}}/>
                 Saída
-              </ModalButtonCoverUp>
-            </ModalSelectHolder>
+              </ModalToggleCoverUp>
+            </ModalToggleHolder>
 
             <ModalInput
               name="category"
@@ -107,9 +112,9 @@ function ModalComponent({
             >
               CADASTRAR
             </ModalSendButton>
-          </ModalInputForm>
+          </ModalForm>
 
-        </ModalHolderContent>
+        </ModalContent>
       </ModalInner>
     </Modal>
   )

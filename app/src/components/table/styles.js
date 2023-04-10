@@ -40,7 +40,6 @@ export const TableContent = styled.div`
   display: flex;
   align-items: center;
 
-
   &:last-child {
     justify-content: center;
     cursor: pointer;
@@ -53,6 +52,10 @@ export const TableContent = styled.div`
 
   & > span {
     ${fontSize};
+  }
+
+  & > span.is-parsed {
+    font-weight: 600;
   }
 
 `
