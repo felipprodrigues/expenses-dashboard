@@ -1,38 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Este é um teste para vaga de desenvolvedor frontend da [Ticto](https://www.ticto.com.br/).
 
-## Getting Started
+## Instrução
 
-First, run the development server:
+1. O usuário deve conseguir visualizar o total de entradas, saídas e saldo total com base nos registros cadastrados.
+
+2. O usuário deve poder cadastrar novos registros e visualizar o resultado em tempo real.
+
+3. É indispensável criar a versão mobile da aplicação.
+
+4. Tecnologias exigidas
+  1. Next.js em sua última versão
+  2. SCSS em versões global e CSS Modules (styles.modules.scss)
+  3. o uso de styled components **não é** uma exigência
+
+## Primeiros passos
+
+Este projeto requer a versão `16.17.1` do Node.js ou superior. Se você ainda não o tem instalado, poderá baixá-lo no site oficial [Node.js](https://nodejs.org/en).
+
+Para instalar as dependências, siga as instruções abaixo:
+
+```bash
+# clone o repositório
+Clone o repositório: git clone git@github.com:felipprodrigues/ticto-s-test-repo.git
+# acesse o diretório local
+Acesse o diretório do projeto: cd ticto-s-test-repo
+# instale as dependências
+Instale as dependências: `npm install` ou `yarn`
+```
+
+## Uso
+
+Este projeto foi construído usando React e Next.js versão `13.2.4`. Para executar o servidor de desenvolvimento, utilize o seguinte comando:
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
+# ou
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O servidor de desenvolvimento será iniciado em [localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Pacotes e Dependências
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Os seguintes pacotes dependências usados neste projeto são:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+@emotion/react
+@emotion/styled
+@mui/icons-material
+@mui/material
+@mui/styled-engine-sc
+eslint
+eslint-config-next
+json-server
+next
+react
+react-dom
+react-toastify
+sass
+styled-components
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Essas dependências já estão incluídas no arquivo package.json e serão instaladas automaticamente quando `npm install` ou `yarn` forem executados.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
