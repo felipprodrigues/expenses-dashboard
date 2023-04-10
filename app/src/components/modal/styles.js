@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 
 export const Modal = styled.div`
   display: ${(props) => (props.isOpen ? 'flex' : 'none')};
@@ -19,20 +19,15 @@ export const ModalInner = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 50%;
+  max-width: 30%;
   width: 100%;
   background: #FDFDFD;
   border-radius: 6px;
   opacity: 1;
   position: relative;
 
-  @media (max-width: 1599px) {
-    max-width: 40%;
-    width: 100%;
-  }
-
   @media (max-width: 499px) {
-    height: 70%;
+    height: 75%;
     width: 90%;
     max-width: 100%;
     overflow: hidden;
@@ -40,24 +35,26 @@ export const ModalInner = styled.div`
   }
 `
 
-export const ModalHolder = styled.div`
+const modalHolderDefault = css`
   padding: 1.5rem;
   width: 100%;
 `
 
-export const ModalHolderClose = styled(ModalHolder)`
+export const ModalHolderCloseBtn = styled.div`
+  ${modalHolderDefault}
   align-items: center;
   display: flex;
   justify-content: flex-end;
-
 `
 
-export const ModalHolderContent = styled(ModalHolder)`
+export const ModalContent = styled.div`
+  ${modalHolderDefault}
   display: grid;
   grid-gap: 1.5em;
 `
 
-export const ModalHolderTitle = styled(ModalHolder)`
+export const ModalTitle = styled.div`
+  ${modalHolderDefault}
   align-items: center;
   display: flex;
   padding: 0;
@@ -69,7 +66,7 @@ export const ModalHolderTitle = styled(ModalHolder)`
   }
 `
 
-export const ModalInputForm = styled.form`
+export const ModalForm = styled.form`
   display: grid;
   grid-template-rows: 1fr;
   grid-gap: 1.5em;
@@ -88,7 +85,7 @@ export const ModalInput = styled.input`
   }
 `
 
-export const ModalSelectHolder = styled.div`
+export const ModalToggleHolder = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   display: flex;
@@ -96,7 +93,7 @@ export const ModalSelectHolder = styled.div`
   position: relative;
 `
 
-export const ModalHiddenInput = styled.input`
+export const ModalToggleInput = styled.input`
   width: 100%;
   height: 2.3rem;
   position: relative;
@@ -105,7 +102,7 @@ export const ModalHiddenInput = styled.input`
   cursor: pointer;
 `
 
-export const ModalButtonCoverUp = styled.span`
+export const ModalToggleCoverUp = styled.span`
   display: inline-flex ;
   align-items: center;
   justify-content: center;
@@ -115,10 +112,11 @@ export const ModalButtonCoverUp = styled.span`
   z-index: 998;
   border: none;
   font-size: 15px;
-  background-color: #fff;
+  background-color: ${(props) => props.bgColor};
   border: 1px solid #D9D9D9;
   border-radius: 6px;
   cursor: pointer;
+  color: ${(props) => props.fontColor};
 
   &:last-child {
     right: 0;
