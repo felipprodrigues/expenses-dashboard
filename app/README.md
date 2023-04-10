@@ -8,10 +8,10 @@ Este é um teste para vaga de desenvolvedor frontend da [Ticto](https://www.tict
 
 3. É indispensável criar a versão mobile da aplicação.
 
-4. Tecnologias exigidas
-  1. Next.js em sua última versão
-  2. SCSS em versões global e CSS Modules (styles.modules.scss)
-  3. o uso de styled components **não é** uma exigência
+4. Tecnologias exigidas:
+    - Next.js em sua última versão
+    - SCSS em versões global e CSS Modules (styles.modules.scss)
+    - o uso de styled components **não é** uma exigência
 
 ## Primeiros passos
 
