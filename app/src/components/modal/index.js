@@ -64,7 +64,7 @@ function ModalComponent({
               id="value"
               placeholder='Preço'
               required
-              type="text"
+              type="number"
               onChange={({target}) => setValue(parseFloat(target.value))}
             />
 
