@@ -1,6 +1,6 @@
-import Head from 'next/head'
-
+//* UTILS
 import React, {useEffect, useState} from 'react'
+import Head from 'next/head'
 
 //* COMPONENTS
 import Cards from '../components/cards'
@@ -11,13 +11,12 @@ import ModalComponent from '../components/modal'
 import styles from '../styles/Home.module.scss'
 
 // * HELPERS
-import currencyMask from '@/helpers/currencyMask';
-
+import getCurrentDate from '@/helpers/getCurrentDate';
 
 export default function Home() {
   // CARDS
-  const [entryValue, setEntryValue] = useState('10000')
-  const [exitValue, setExitValue] = useState('5000')
+  const [entryValue, setEntryValue] = useState(7350)
+  const [exitValue, setExitValue] = useState(899)
   const [value, setValue] = useState(0)
 
   // MODAL
@@ -29,7 +28,7 @@ export default function Home() {
     {
       id: 0,
       description: 'Salário',
-      value: entryValue,
+      value: 7350,
       category: 'Receita Fixa',
       date: '12/02/2022 às 14h04',
       type: 'entrada'
@@ -37,7 +36,7 @@ export default function Home() {
     {
       id: 1,
       description: 'Curso de NextJS',
-      value: exitValue,
+      value: 899,
       category: 'Educação',
       date: '12/02/2022 às 14h04',
       type: 'saida'
@@ -80,14 +79,15 @@ export default function Home() {
       description,
       value,
       category,
-      type
+      type,
+      date: getCurrentDate()
     }
 
     const draft = tableData
     draft.push(data)
     setTableData([...draft])
 
-    if(type === 'entrada') {
+    if(data.type === 'entrada') {
       setEntryValue(entryValue + data.value)
     } else {
       setExitValue(exitValue + data.value)
@@ -96,26 +96,16 @@ export default function Home() {
     toggleModal()
   }
 
-  const handleDelete = (el, id) => {
-    const draft = tableData.filter(items => items.id !== id)
+  const handleDelete = (el) => {
+    const draft = tableData.filter(item => item.id !== el.id)
 
     setTableData([...draft])
 
-    if(el.id === id && el.type === 'entrada') {
-      return  setEntryValue(entryValue - value)
+    if(el.type === 'entrada') {
+      setEntryValue((currentVal) => currentVal - el.value)
     } else {
-      return setExitValue(exitValue - value)
+      setExitValue((currentVal) => currentVal - el.value)
     }
-
-    //!! ---------------------------CHECK IT OUT LATER------------------------------------------------ !!
-    // const tableDataClone = [...tableData]
-    // const index = tableDataClone.findIndex(item => item.id === id)
-
-    // tableDataClone.splice(index, 1);
-
-    // setTableData([...tableDataClone])
-
-    // console.log(tableDataClone[index].type)
   }
 
   return (
@@ -153,19 +143,19 @@ export default function Home() {
             <div className={styles.content__grid}>
               <Cards
                 label={'Entradas'}
-                value={currencyMask(entryValue)}
+                value={entryValue}
                 iconType={'up'}
                 />
 
               <Cards
                 label={'Saídas'}
-                value={currencyMask(exitValue)}
+                value={exitValue}
                 iconType={'down'}
               />
 
               <Cards
                 label={'Saldo Total'}
-                value={currencyMask(entryValue - exitValue)}
+                value={entryValue - exitValue}
                 bgColor={true}
                 fontColor={true}
               />

@@ -5,7 +5,6 @@ import {
   Modal,
   ModalInner,
   ModalHolderContent,
-  ModalInputHolder,
   ModalHolderTitle,
   ModalSelectHolder,
   ModalInput,
@@ -14,7 +13,8 @@ import {
   ModalHolderClose,
   ModalSendButton,
   ModalHiddenInput,
-  ModalButtonCoverUp
+  ModalButtonCoverUp,
+  ModalInputForm
 } from './styles'
 
 //* ICONS
@@ -46,66 +46,69 @@ function ModalComponent({
         </ModalHolderClose>
 
         <ModalHolderContent>
-          <ModalInputHolder>
-            <ModalHolderTitle>
-              <h1>Cadastrar Transação</h1>
-            </ModalHolderTitle>
+          <ModalHolderTitle>
+            <h1>Cadastrar Transação</h1>
+          </ModalHolderTitle>
 
-              <ModalInput
-                name="name"
-                id="name"
-                placeholder='Nome'
-                required
-                onChange={({target}) => setDescription(target.value)}
-              />
-              <ModalInput
-                name="value"
-                id="value"
-                placeholder='Preço'
-                required
-                type="text"
-                onChange={({target}) => setValue(parseFloat(target.value))}
-              />
+          <ModalInputForm
+            type="reset"
+          >
+            <ModalInput
+              name="description"
+              id="description"
+              placeholder='Descrição'
+              required
+              onChange={({target}) => setDescription(target.value)}
+            />
+            <ModalInput
+              name="value"
+              id="value"
+              placeholder='Preço'
+              required
+              type="text"
+              onChange={({target}) => setValue(parseFloat(target.value))}
+            />
 
-              <ModalSelectHolder>
-                <ModalHiddenInput
-                  type="radio"
-                  name="button"
-                  id="entrada"
-                  onChange={() => setType('entrada')}
+            <ModalSelectHolder>
+              <ModalHiddenInput
+                type="radio"
+                name="button"
+                id="entrada"
+                onChange={() => setType('entrada')}
+              />
+              <ModalButtonCoverUp>
+                <ArrowCircleUpIcon style={{color: '#06D6A2'}}/>
+                Entrada
+              </ModalButtonCoverUp>
+
+              <ModalHiddenInput
+                name="button"
+                id="saida"
+                type="radio"
+                onChange={() => setType('saida')}
                 />
-                <ModalButtonCoverUp>
-                  <ArrowCircleUpIcon style={{color: '#06D6A2'}}/>
-                  Entrada
-                </ModalButtonCoverUp>
+              <ModalButtonCoverUp>
+                <ArrowCircleDownIcon style={{color: '#DB3766'}}/>
+                Saída
+              </ModalButtonCoverUp>
+            </ModalSelectHolder>
 
-                <ModalHiddenInput
-                  name="button"
-                  id="saida"
-                  type="radio"
-                  onChange={() => setType('saida')}
-                  />
-                <ModalButtonCoverUp>
-                  <ArrowCircleDownIcon style={{color: '#DB3766'}}/>
-                  Saída
-                </ModalButtonCoverUp>
-              </ModalSelectHolder>
+            <ModalInput
+              name="category"
+              id="category"
+              placeholder='Categoria'
+              required
+              onChange={({target}) => setCategory(target.value)}
+            />
 
-              <ModalInput
-                name="category"
-                id="category"
-                placeholder='Categoria'
-                required
-                onChange={({target}) => setCategory(target.value)}
-              />
+            <ModalSendButton
+              onClick={() => handleCreate()}
+              type="reset"
+            >
+              CADASTRAR
+            </ModalSendButton>
+          </ModalInputForm>
 
-              <ModalSendButton
-                onClick={() => handleCreate()}
-              >
-                CADASTRAR
-              </ModalSendButton>
-
-          </ModalInputHolder>
         </ModalHolderContent>
       </ModalInner>
     </Modal>
