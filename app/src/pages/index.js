@@ -69,6 +69,7 @@ export default function Home() {
 
   const toggleModal = () => {
     setIsOpen(() => !isOpen)
+    resetInput()
   }
 
   const handleId = () => {
@@ -194,16 +195,18 @@ export default function Home() {
         </div>
 
         {/* MODAL */}
-        <ModalComponent
-          isOpen={isOpen}
-          toggle={toggleModal}
-          setDescription={setDescription}
-          setValue={setValue}
-          setCategory={setCategory}
-          handleCreate={handleCreate}
-          setType={setType}
-          type={type}
-        />
+        {isOpen &&
+          <ModalComponent
+            isOpen={isOpen}
+            toggle={toggleModal}
+            setDescription={setDescription}
+            setValue={setValue}
+            setCategory={setCategory}
+            handleCreate={handleCreate}
+            setType={setType}
+            type={type}
+          />
+        }
       </main>
     </>
   )
