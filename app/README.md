@@ -1,17 +1,13 @@
-Este é um teste para vaga de desenvolvedor frontend da [Ticto](https://www.ticto.com.br/).
-
 ## Instrução
 
 1. O usuário deve conseguir visualizar o total de entradas, saídas e saldo total com base nos registros cadastrados.
 
 2. O usuário deve poder cadastrar novos registros e visualizar o resultado em tempo real.
 
-3. É indispensável criar a versão mobile da aplicação.
-
-4. Tecnologias exigidas:
+3. Tecnologias usadas:
     - Next.js em sua última versão
     - SCSS em versões global e CSS Modules (styles.modules.scss)
-    - o uso de styled components **não é** uma exigência
+    - Styled components
 
 ## Primeiros passos
 
