@@ -136,7 +136,7 @@ export default function Home() {
     <>
       <ToastContainer autoClose={3000}/>
       <Head>
-        <title>Teste Ticto</title>
+        <title>Expenses Dashboard</title>
         <meta name="description" content="Criado por Felipe Rodrigues" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
