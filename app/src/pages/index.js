@@ -38,7 +38,7 @@ export default function Home() {
     },
     {
       id: 1,
-      description: 'Curso de NextJS',
+      description: 'Introdução à NextJs',
       value: 899,
       category: 'Educação',
       date: '12/02/2022 às 19h32',
@@ -148,7 +148,7 @@ export default function Home() {
           <div className={styles.header__wrapper}>
             <div className={styles.header__holder}>
               <div className={styles.header__content}>
-                <h1>TICTO</h1>
+                <h1>Expenses Dashboard</h1>
               </div>
 
               <div className={styles.header__content}>
